@@ -45,4 +45,3 @@ app.*.map.json
 
 # Add gitignore default for Flutter
 pubspec.lock
-pubspec.yaml
