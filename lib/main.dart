@@ -8,7 +8,7 @@ Future<void> main() async {
   if (Firebase.apps.isEmpty) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        apiKey: "AIzaSyBoIYDznf-OuAFQy8F1ZJkaToS2kVoLg0w",
+        apiKey: "secretCatcationKey",
         appId: "catcation-auth",
         messagingSenderId: "562408995849",
         projectId: "catcation-auth",

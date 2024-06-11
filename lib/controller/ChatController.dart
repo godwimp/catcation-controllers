@@ -5,6 +5,7 @@ class ChatController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+// Send message
   Future<void> sendMessage(String message, String receiver) async {
     try {
       final sender = _auth.currentUser!.uid;
@@ -21,7 +22,7 @@ class ChatController {
       throw Exception(e);
     }
   }
-
+// Get messages
   Stream<List<Map<String, dynamic>>> getMessages(String receiver) {
     try {
       return _firestore.collection('messages').where('receiver', isEqualTo: receiver).snapshots().map((snapshot) {
@@ -31,8 +32,7 @@ class ChatController {
       throw Exception(e);
     }
   }
-
-  //get users
+// Get users
   Future<List<Map<String, dynamic>>> getUsers() async {
     try {
       final snapshot = await _firestore.collection('users').get();

@@ -6,8 +6,7 @@ class OrderController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  
-  
+// Add new order
   Future<void> addOrder(order.Transaction order) async {
     try {
       await _firestore.collection('orders').add(order.toDocument());
@@ -25,6 +24,7 @@ class OrderController {
     }
   }
 
+// Get order by user
   Future<List<order.Transaction>> getOrdersByUser() async {
     try {
       final snapshot = await _firestore.collection('orders').where('ownerId', isEqualTo: _auth.currentUser!.uid).get();

@@ -4,7 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 class CatOwnerProfileController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  
+
+// Cat owner update profile
   Future<void> updateProfile(CatOwner catOwner) async {
     try {
       await _firestore.collection('cat_owners').doc(catOwner.id).update(catOwner.toDocument());
@@ -13,6 +14,7 @@ class CatOwnerProfileController {
     }
   }
 
+// Cat owner get profile
   Future<CatOwner> getProfile() async {
     try {
       final snapshot = await _firestore.collection('cat_owners').doc(_auth.currentUser!.uid).get();

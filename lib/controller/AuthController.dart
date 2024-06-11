@@ -14,7 +14,7 @@ class AuthController {
     final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
     return emailRegex.hasMatch(email);
   }
-
+// User sign in with email
   Future<User?> signInWithEmailAndPassword({required String email, required String password}) {
     if (!_validateEmail(email)) {
       return Future.error(Exception('Invalid email'));
@@ -36,7 +36,7 @@ class AuthController {
     }
   }
   
-
+// User regiter with email
   Future<User?> createUserWithEmailAndPassword({required String email, required String password}) async {
     try {
       if (!_validateEmail(email)) {
@@ -67,9 +67,8 @@ class AuthController {
   Future<void> signOut() async {
     await _auth.signOut();
   }
-
+// User update profile
   Future<void> updateProfile({
-    // do not update if the field is the same as the current user data
     String? name,
     String? email,
     String? password,
